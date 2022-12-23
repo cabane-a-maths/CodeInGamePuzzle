@@ -1,0 +1,50 @@
+a="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+operation = input()
+pn = int(input())
+r1,r2,r3=[input()for _ in range(3)]
+message = input()
+def encod(str):
+    st=""
+    for i,v in enumerate(str):
+        st+=chr((ord(v)+pn+i-65)%26+65)
+    rot1=""
+    for i in st:
+        indr1=a.index(i)
+        ro1=r1[indr1]
+        rot1+=ro1
+    rot2=""
+    for j in rot1:
+        indr2=a.index(j)
+        ro2=r2[indr2]
+        rot2+=ro2
+    rot3=""
+    for k in rot2:
+        indr3=a.index(k)
+        ro3=r3[indr3]
+        rot3+=ro3
+    return rot3
+
+def decod(str):
+    
+    rot3=""
+    for i in str:
+        indr3=r3.index(i)
+        ro3=a[indr3]
+        rot3+=ro3
+    rot2=""
+    for j in rot3:
+        indr2=r2.index(j)
+        ro2=a[indr2]
+        rot2+=ro2
+    rot1=""
+    for k in rot2:
+        indr1=r1.index(k)
+        ro1=a[indr1]
+        rot1+=ro1
+    st=""
+    for i,v in enumerate(rot1):
+        st+=chr((ord(v)-i-pn-65)%26+65)
+    return st
+if operation=="ENCODE":
+    print(encod(message))
+else:print(decod(message))
