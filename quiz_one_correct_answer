@@ -1,0 +1,15 @@
+n=int(input())
+cr = {"A":0, "B":1,"C":2, "D":3, "E":4}
+k=input()
+kn=100/n
+score = 0
+for i in range(n):
+  a=input()
+  if a.count("X")!=1:
+    score += 0
+    pass
+  else:
+    dx = a.index("X")
+    if dx==cr[k[i]]:
+      score +=kn
+print(score)
